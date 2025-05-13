@@ -3,6 +3,7 @@ from data import base_data
 from typing import Optional
 
 
+expect.set_options(timeout=30000)
 class BasePage:
 
     def __init__(self, page: Page) -> None:
@@ -44,3 +45,15 @@ class BasePage:
         Клик на элемент по роли
         """
         return self.page.get_by_role(sort, name=name).click()
+
+    def click_by_title(self, title):
+        """
+        Клик по элементу с нужным тайтлом
+        """
+        return self.page.get_by_title(title).click()
+
+    def open_new_page(self, title):
+        with self.page.expect_popup() as popup_info:
+            self.page.get_by_title(title).click()
+        new_page = popup_info.value
+        return new_page
