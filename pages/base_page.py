@@ -38,3 +38,9 @@ class BasePage:
         Нажатие на чекбокс
         """
         return self.page.locator(loc).content_frame.get_by_role("checkbox", name=name).uncheck()
+
+    def click_by_role_link(self, sort, name):
+        """
+        Клик на элемент по роли
+        """
+        return self.page.get_by_role(sort, name=name).click()
