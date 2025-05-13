@@ -26,3 +26,15 @@ class BasePage:
         Ожидание локатора
         """
         return expect(self.page.locator(loc)).to_be_visible()
+
+    def fill_placeholder(self, loc, name, fill):
+        """
+        Заполнение плейсхолдера
+        """
+        return self.page.locator(loc).content_frame.get_by_role("textbox", name=name).fill(fill)
+
+    def checkbox_uncheck(self, loc, name):
+        """
+        Нажатие на чекбокс
+        """
+        return self.page.locator(loc).content_frame.get_by_role("checkbox", name=name).uncheck()
