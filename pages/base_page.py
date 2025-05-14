@@ -53,7 +53,25 @@ class BasePage:
         return self.page.get_by_title(title).click()
 
     def open_new_page(self, title):
+        """
+        Клик на тайтл и открытие новой вклвдки
+        """
         with self.page.expect_popup() as popup_info:
             self.page.get_by_title(title).click()
         new_page = popup_info.value
         return new_page
+
+    def open_new_page_after_click_by_role(self, sort, name):
+        """
+        Клик на роль и открытие новой страницы
+        """
+        with self.page.expect_popup() as popup_info:
+            self.page.get_by_role(sort, name=name).click()
+        new_page = popup_info.value
+        return new_page
+
+    def open_by_test_id(self, loc):
+        """
+        Клик по элементу с testID
+        """
+        return self.page.get_by_test_id(loc).click()
