@@ -54,7 +54,7 @@ class BasePage:
 
     def open_new_page(self, title):
         """
-        Клик на тайтл и открытие новой вклвдки
+        Клик на тайтл и открытие новой вкладки
         """
         with self.page.expect_popup() as popup_info:
             self.page.get_by_title(title).click()
@@ -75,3 +75,9 @@ class BasePage:
         Клик по элементу с testID
         """
         return self.page.get_by_test_id(loc).click()
+
+    def fill_placeholder_by_role(self, role, fill, name = None):
+        """
+        Ввод текста в плейсхолдер
+        """
+        return self.page.get_by_role(role, name=name).fill(fill)
