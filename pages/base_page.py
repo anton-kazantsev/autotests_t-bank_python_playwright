@@ -70,14 +70,24 @@ class BasePage:
         new_page = popup_info.value
         return new_page
 
-    def open_by_test_id(self, loc):
-        """
-        Клик по элементу с testID
-        """
-        return self.page.get_by_test_id(loc).click()
-
     def fill_placeholder_by_role(self, role, fill, name = None):
         """
         Ввод текста в плейсхолдер
         """
         return self.page.get_by_role(role, name=name).fill(fill)
+
+    def hover_on_element(self, name, role=None):
+        """
+        Наведение на элемент
+        """
+        return self.by_locator(name, role).hover()
+
+    # Функция выбора типа локатора
+    def by_locator(self, name, role=None):
+        """
+        Выбор типа передаваемого локатора
+        """
+        if role is None:
+            return self.page.locator(name)
+        else:
+            return self.page.get_by_role(role, name=name)
