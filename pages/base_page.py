@@ -91,3 +91,12 @@ class BasePage:
             return self.page.locator(name)
         else:
             return self.page.get_by_role(role, name=name)
+
+    def click(self, name, role=None):
+        """
+        Клик на локатор
+        """
+        return self.by_locator(name, role).click()
+
+    def fill_locator(self, name, fill):
+        return self.page.locator(name).fill(fill)
