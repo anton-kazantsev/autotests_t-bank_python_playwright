@@ -1,9 +1,7 @@
 from playwright.sync_api import Page
 from pages.main_page.horizontal_menu_page import HorizontalMenuPage
-import pytest
 
 
-@pytest.mark.smoke
 class TestHorizontalMenu:
 
     slides = HorizontalMenuPage

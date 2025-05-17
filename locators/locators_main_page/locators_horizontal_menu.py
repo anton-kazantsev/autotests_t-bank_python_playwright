@@ -76,8 +76,8 @@ class LocatorsHorizontalMenu:
     )
 
     heading_premium = BaseLocator(
-        selector='role=heading[name="Premium"]',
-        description="Заголовок Premium"
+        selector="Что вам важно в сервисе Premium?",
+        description="Заголовок Что вам важно в сервисе Premium?"
     )
 
     heading_deposits = BaseLocator(
