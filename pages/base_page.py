@@ -100,3 +100,121 @@ class BasePage:
 
     def fill_locator(self, name, fill):
         return self.page.locator(name).fill(fill)
+
+
+
+    def choice_locator(self,
+                       locator=None,
+                       role=None, name=None,
+                       title=None,
+                       text=None,
+                       test_id=None,
+                       label=None
+                       ):
+        """
+        Выбор типа локатора:
+        """
+        if locator is not None:
+            return self.page.locator(locator)
+        elif role is not None and name is not None:
+            return self.page.get_by_role(role, name=name)
+        elif title is not None:
+            return self.page.get_by_title(title)
+        elif text is not None:
+            return self.page.get_by_text(text)
+        elif test_id is not None:
+            return self.page.get_by_test_id(test_id)
+        elif label is not None:
+            return self.page.get_by_label(label)
+        else:
+            raise ValueError(
+                "Необходимо передать одно из значений для выбора необходимого типа возвращаемого локатора: "
+                "locator, role+name, title, text, test_id или label."
+            )
+
+
+    def click_choice_locator(self,
+                             locator=None,
+                             role=None, name=None,
+                             title=None,
+                             text=None,
+                             test_id=None,
+                             label=None
+                             ):
+        """
+        Клик на выбранный локатор
+        """
+        return self.choice_locator(locator, role, name, title, text, test_id, label).click()
+
+
+    def fill_choice_locator(self,
+                            fill,
+                            locator=None,
+                            role=None, name=None,
+                            title=None,
+                            text=None,
+                            test_id=None,
+                            label=None
+                            ):
+        """
+        Заполнение плейсхолдеда
+        """
+        return self.choice_locator(locator, role, name, title, text, test_id, label).fill(fill)
+
+
+    def hover_choice_locator(self,
+                             locator=None,
+                             role=None, name=None,
+                             title=None,
+                             text=None,
+                             test_id=None,
+                             label=None
+                             ):
+        """
+        Наведение на выбранный локатор
+        """
+        return self.choice_locator(locator, role, name, title, text, test_id, label).hover()
+
+
+    def checkbox_uncheck_choice_locator(self,
+                                        locator=None,
+                                        role=None, name=None,
+                                        title=None,
+                                        text=None,
+                                        test_id=None,
+                                        label=None
+                                        ):
+        """
+        Снятие чекбокса внутри локатора
+        """
+        return self.choice_locator(locator, role, name, title, text, test_id, label).uncheck()
+
+
+    def expect_to_visible_choice_locator(self,
+                              locator=None,
+                              role=None, name=None,
+                              title=None,
+                              text=None,
+                              test_id=None,
+                              label=None
+                              ):
+        """
+        Ожидание отображения локатора
+        """
+        return expect(self.choice_locator(locator, role, name, title, text, test_id, label)).to_be_visible()
+
+
+    def open_new_page_after_click_choice_locator(self,
+                                                 locator=None,
+                                                 role=None, name=None,
+                                                 title=None,
+                                                 text=None,
+                                                 test_id=None,
+                                                 label=None):
+        """
+        Клик на локатор и открытие новой вкладки
+        """
+        with self.page.expect_popup() as popup_info:
+            self.choice_locator(locator, role, name, title, text, test_id, label).click()
+        new_page = popup_info.value
+        return new_page
