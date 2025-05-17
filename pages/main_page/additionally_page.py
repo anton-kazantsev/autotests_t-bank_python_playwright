@@ -1,9 +1,11 @@
 from playwright.sync_api import Page
-from locators.locators_main_page.locators_additionally import LocatorsAdditionally
+from locators.locators_main_page.locators_additionally import LocatorsAdditionally as Loc
 from pages.base_page import BasePage
 
 
 class AdditionallyPage(BasePage):
+
+    link = 'link'
 
     def __init__(self, page: Page):
         super().__init__(page)
@@ -13,13 +15,13 @@ class AdditionallyPage(BasePage):
         Открытие Помощь
         """
         self.open("")
-        self.click_by_role_link("link", LocatorsAdditionally.helps.selector)
-        self.expect_locator(LocatorsAdditionally.headers_helps.selector)
+        self.click_choice_locator(role=self.link, name=Loc.helps.selector)
+        self.expect_to_visible_choice_locator(locator=Loc.headers_helps.selector)
 
     def open_reviews(self):
         """
         Открытие Отзывы
         """
         self.open("")
-        self.click_by_role_link("link", LocatorsAdditionally.reviews.selector)
-        self.expect_locator(LocatorsAdditionally.headers_reviews.selector)
+        self.click_choice_locator(role=self.link, name=Loc.reviews.selector)
+        self.expect_to_visible_choice_locator(locator=Loc.headers_reviews.selector)

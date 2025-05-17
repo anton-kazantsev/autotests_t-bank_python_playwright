@@ -7,3 +7,4 @@ class TestHeader:
     def test_open_products_for_individuals(self, page: Page):
         products = HeaderPage(page)
         products.open_still_header()
+        products.open_products_for_individuals()
