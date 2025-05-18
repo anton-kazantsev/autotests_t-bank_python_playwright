@@ -1,13 +1,10 @@
 from playwright.sync_api import Page
 from pages.base_page import BasePage
-from locators.locators_points_of_replenishment import LocatorsReplenishment
+from locators.locators_points_of_replenishment import LocatorsReplenishment as Loc
 from data.base_data import uri_points_of_replenishment
 
 
 class ReplenishmentPage(BasePage):
-
-    button = "button"
-    option = "option"
 
     def __init__(self, page: Page):
         super().__init__(page)
@@ -22,29 +19,28 @@ class ReplenishmentPage(BasePage):
         """
         Нажать Снять
         """
-        self.click(LocatorsReplenishment.click_take.selector)
+        self.click_choice_locator(locator=Loc.click_take.selector)
 
     def click_currency(self):
         """
         Нажать на выбор валюты
         """
-        self.click(LocatorsReplenishment.input_choice.selector, self.button)
+        self.click_choice_locator(role=self.button, name=Loc.input_choice.selector)
 
     def choice_dollars(self):
         """
         Выбор валюты Доллары
         """
-        self.click(LocatorsReplenishment.choice_dollars.selector, self.option)
+        self.click_choice_locator(role=self.option, name=Loc.choice_dollars.selector)
 
     def input_summ(self):
         """
         Ввод суммы для снятия средств
         """
-        self.fill_locator(LocatorsReplenishment.placeholder_summ.selector,
-                          LocatorsReplenishment.input_summ.selector)
+        self.fill_choice_locator(locator=Loc.placeholder_summ.selector, fill=Loc.input_summ.selector)
 
     def choosing_bank(self):
         """
         Выбор Т-Банк в списке банков
         """
-        self.click_locator(LocatorsReplenishment.choosing_bank.selector)
+        self.click_choice_locator(locator=Loc.choosing_bank.selector)

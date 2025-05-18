@@ -9,6 +9,7 @@ class BasePage:
     combobox = 'combobox'
     option = 'option'
     link = 'link'
+    button = "button"
 
     def __init__(self, page: Page) -> None:
         self.page = page
