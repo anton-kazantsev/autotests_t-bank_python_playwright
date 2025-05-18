@@ -6,6 +6,9 @@ from typing import Optional
 expect.set_options(timeout=30000)
 class BasePage:
 
+    combobox = 'combobox'
+    option = 'option'
+
     def __init__(self, page: Page) -> None:
         self.page = page
         self.base_url: str = base_data.base_url
@@ -116,7 +119,7 @@ class BasePage:
         """
         if locator is not None:
             return self.page.locator(locator)
-        elif role is not None and name is not None:
+        elif role is not None:
             return self.page.get_by_role(role, name=name)
         elif title is not None:
             return self.page.get_by_title(title)
