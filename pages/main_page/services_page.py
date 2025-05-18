@@ -13,30 +13,29 @@ class ServicesPage(BasePage):
         Открытие курсов валют
         """
         self.open("")
-        self.click_by_role_link("link", LocatorServices.currency_rate.selector)
-        self.expect_locator(LocatorServices.header_currency_rate.selector)
+        self.click_choice_locator(role=self.link, name=LocatorServices.currency_rate.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorServices.header_currency_rate.selector)
 
     def open_cash_withdrawal(self):
         """
         Открытие Снятие наличных
         """
         self.open("")
-        self.click_by_role_link("link", LocatorServices.cash_withdrawal.selector)
-        self.expect_locator(LocatorServices.header_cash_withdrawal.selector)
+        self.click_choice_locator(role=self.link, name=LocatorServices.cash_withdrawal.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorServices.header_cash_withdrawal.selector)
 
     def open_mortgage_repayment(self):
         """
         Открытие Погашение ипотеки
         """
         self.open("")
-        self.click_by_role_link("link", LocatorServices.mortgage_repayment.selector)
-        self.expect_locator(LocatorServices.header_mortgage_repayment.selector)
+        self.click_choice_locator(role=self.link, name=LocatorServices.mortgage_repayment.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorServices.header_mortgage_repayment.selector)
 
     def open_more_articles(self):
         """
         Открытие Больше статей
         """
         self.open("")
-        self.click_by_role_link("link", LocatorServices.more_articles.selector)
-        self.expect_locator(LocatorServices.header_more_articles.selector)
-        # self.page.pause()
+        self.click_choice_locator(role=self.link, name=LocatorServices.more_articles.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorServices.header_more_articles.selector)
