@@ -4,7 +4,7 @@ from locators.base_locator import BaseLocator
 class LocatorsWork:
 
     work = BaseLocator(
-        selector=".ebRTuR07k:has-text('Смотреть вакансии')",
+        selector=".eb7mRSyRD:has-text('Смотреть вакансии')",
         description="Вакансии"
     )
 
