@@ -5,8 +5,6 @@ from pages.base_page import BasePage
 
 class AdditionallyPage(BasePage):
 
-    link = 'link'
-
     def __init__(self, page: Page):
         super().__init__(page)
 
