@@ -13,18 +13,18 @@ class AppPage(BasePage):
         Открытие страницы android
         """
         self.open("")
-        self.click_by_title(LocatorApp.button_android.selector)
-        self.expect_locator(LocatorApp.header_android.selector)
+        self.click_choice_locator(title=LocatorApp.button_android.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorApp.header_android.selector)
 
     def open_ios(self):
         """
         Открытие страницы ios
         """
         self.open("")
-        self.click_by_title(LocatorApp.button_ios.selector)
-        self.expect_locator(LocatorApp.header_ios.selector)
+        self.click_choice_locator(title=LocatorApp.button_ios.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorApp.header_ios.selector)
 
     def open_app_gallery(self):
         self.open("")
-        new_page = self.open_new_page(LocatorApp.button_app_gallery.selector)
+        new_page = self.open_new_page_after_click_choice_locator(title=LocatorApp.button_app_gallery.selector)
         expect(new_page.locator(LocatorApp.title_app_gallery.selector)).to_be_visible()

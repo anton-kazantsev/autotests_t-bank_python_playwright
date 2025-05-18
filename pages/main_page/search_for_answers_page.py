@@ -14,15 +14,15 @@ class SearchPage(BasePage):
         Ввод вопроса в плейсхолдер
         """
         self.open("")
-        self.fill_placeholder_by_role("combobox", Constants.text_search)
-        self.click_by_role_link("option", LocatorsSearch.fill_search.selector)
-        self.expect_locator(LocatorsSearch.headed_search.selector)
+        self.fill_choice_locator(role=self.combobox, fill=Constants.text_search)
+        self.click_choice_locator(role=self.option, name=LocatorsSearch.fill_search.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorsSearch.headed_search.selector)
 
     def open_how_input_in_account(self):
         """
         Нажатие на кнопку вопроса Как войти в личный кабинет
         """
         self.open("")
-        self.click_locator(LocatorsSearch.button_how_input_in_account.selector)
-        self.click_by_role_link("option", LocatorsSearch.click_input_in_account.selector)
-        self.expect_locator(LocatorsSearch.headed_input_in_account.selector)
+        self.click_choice_locator(locator=LocatorsSearch.button_how_input_in_account.selector)
+        self.click_choice_locator(role=self.option, name=LocatorsSearch.click_input_in_account.selector)
+        self.expect_to_visible_choice_locator(locator=LocatorsSearch.headed_input_in_account.selector)

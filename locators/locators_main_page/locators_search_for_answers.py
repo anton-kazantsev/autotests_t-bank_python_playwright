@@ -3,11 +3,6 @@ from locators.base_locator import BaseLocator
 
 class LocatorsSearch:
 
-    input_search = BaseLocator(
-        selector="role=combobox[name='Поиск']",
-        description="Плейсходлер поиска"
-    )
-
     fill_search = BaseLocator(
         selector="Ипотека на вторичное жилье Кредиты • Ипотека",
         description="Выбор первой строки в выпадающем списке"
